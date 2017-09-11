@@ -1,0 +1,42 @@
+CREATE TABLE [dbo].[Cart]
+(
+[Id] [nvarchar] (128) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[Name] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[StoreId] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[ChannelId] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[IsAnonymous] [bit] NOT NULL,
+[CustomerId] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[CustomerName] [nvarchar] (128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[OrganizationId] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Currency] [nvarchar] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[Coupon] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LanguageCode] [nvarchar] (16) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[TaxIncluded] [bit] NOT NULL,
+[IsRecuring] [bit] NOT NULL,
+[Comment] [nvarchar] (2048) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Total] [money] NOT NULL,
+[SubTotal] [money] NOT NULL,
+[ShippingTotal] [money] NOT NULL,
+[HandlingTotal] [money] NOT NULL,
+[DiscountTotal] [money] NOT NULL,
+[TaxTotal] [money] NOT NULL,
+[CreatedDate] [datetime] NOT NULL,
+[ModifiedDate] [datetime] NULL,
+[CreatedBy] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ModifiedBy] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ValidationType] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[SubTotalWithTax] [money] NOT NULL CONSTRAINT [DF__Cart__SubTotalWi__25DB9BFC] DEFAULT ((0)),
+[ShippingTotalWithTax] [money] NOT NULL CONSTRAINT [DF__Cart__ShippingTo__26CFC035] DEFAULT ((0)),
+[HandlingTotalWithTax] [money] NOT NULL CONSTRAINT [DF__Cart__HandlingTo__27C3E46E] DEFAULT ((0)),
+[DiscountTotalWithTax] [money] NOT NULL CONSTRAINT [DF__Cart__DiscountTo__28B808A7] DEFAULT ((0)),
+[DiscountAmount] [money] NOT NULL CONSTRAINT [DF__Cart__DiscountAm__29AC2CE0] DEFAULT ((0)),
+[PaymentTotal] [money] NOT NULL CONSTRAINT [DF__Cart__PaymentTot__370627FE] DEFAULT ((0)),
+[PaymentTotalWithTax] [money] NOT NULL CONSTRAINT [DF__Cart__PaymentTot__37FA4C37] DEFAULT ((0)),
+[Status] [nvarchar] (64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Fee] [money] NOT NULL CONSTRAINT [DF__Cart__Fee__4277DAAA] DEFAULT ((0)),
+[FeeWithTax] [money] NOT NULL CONSTRAINT [DF__Cart__FeeWithTax__436BFEE3] DEFAULT ((0)),
+[TaxPercentRate] [decimal] (18, 4) NOT NULL CONSTRAINT [DF__Cart__TaxPercent__4830B400] DEFAULT ((0))
+)
+GO
+ALTER TABLE [dbo].[Cart] ADD CONSTRAINT [PK_dbo.Cart] PRIMARY KEY CLUSTERED  ([Id])
+GO
